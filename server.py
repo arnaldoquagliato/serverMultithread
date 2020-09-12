@@ -1,6 +1,7 @@
 import socket
 import argparse
 import threading 
+import requests
 
 parser = argparse.ArgumentParser(description = "Multithread so o básico")
 parser.add_argument('--host', metavar = 'host', type = str, nargs = '?', default = 'localhost')
@@ -25,19 +26,25 @@ def clienteNovo(cliente, connection):
 	print(f"Conexao feita pelo: {ip} e porta: {port}")
 	count = 0
 	while True:
-		if count == 120:
+		fileName = 'test.html'
+		openFileName = open(fileName, 'rb')
+		kar = openFileName.read(6053)
+		cliente.send(kar)
+		if count > 0:
 			break
-		print(f"estou executando: {count}")
-		count +=1
+		print("html enviado")
+    
 	print(f"O cliente com: {ip} e na porta: {port} sucumbiu")
+	openFileName.close()
 	cliente.close()
+	thread.exit()
 
 while True:
 	try: 
 		cliente, ip = socketDosCria.accept()
 		threading._start_new_thread(clienteNovo,(cliente, ip))
 	except KeyboardInterrupt:
-		print(f"Server interrompido")
+		print(f"Server interrompido")      
 	except Exception as e:
 		print(f"Erro: {e}")
 
