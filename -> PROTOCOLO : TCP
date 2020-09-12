@@ -1,0 +1,11 @@
+(i) criará um socket de conexão quando contatado por um cliente (navegador);
+
+
+
+
+(ii) criará uma thread responsável por escutar as requisições HTTP por esse socket criado. Veja o formato nas informações anteriores que já passei;
+(iii) analisará a requisição para determinar o arquivo específico sendo requisitado;
+(iv) obterá o arquivo requisitado do sistema de arquivo do servidor;
+(v) criará uma mensagem de resposta HTTP consistindo no arquivo requisitado precedido por linhas de cabeçalho. Veja o formato nas informações anteriores que já passei;
+e
+(vi) enviará a resposta pela conexão TCP ao navegador requisitante. Se um navegador requisitar um arquivo que não está presente no seu servidor, seu servidor deverá retornar uma mensagem de erro “404 Not Found”.
